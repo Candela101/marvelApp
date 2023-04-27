@@ -1,0 +1,20 @@
+<div class="text-center">
+    <h1 class="titulo">
+        <img src="../../../assets/images/logomarvel.png" alt="Logo Marvel" width="250" height="80">
+        {{title}}: <small>{{character.name}}</small>
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <img src="{{character.thumbnailPath}}.{{character.thumbnailExtension}}" class="img-thumbnail" alt="{{character.name}}">
+    </div>
+
+    <div class="col-sm-6">
+        <p><strong>DESCRIPTION: </strong>{{characterDesc}}</p>
+        <p><strong>MODIFIED: </strong>{{character.modified | date}}</p>
+        <a href="{{character.urls}}" target="_blank" class="btn btn-outline-danger btn-block">More details</a> <br>
+
+        <a routerLink="/characters" class="btn btn-outline-primary btn-block my-2" href="#">Return</a>
+    </div>
+</div>
