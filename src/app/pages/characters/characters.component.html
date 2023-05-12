@@ -1,32 +1,32 @@
-<div class="text-center">
-    <h1 class="titulo">
-        <img src="../../../assets/images/logomarvel.png" alt="Marvel Logo" width="250" height="80">
-        {{title}}
-    </h1>
-</div>
-
-<div class="row justify-content-end">
-    <div class="col-lg-3 mb-4">
-        <div class="input-group">
-            <input type="text" class="form-control mr-sm-2" placeholder="Search character" [(ngModel)]="searchQuery">
-            <div class="input-group-append">
-                <button class="btn btn-outline-primary" type="button" (click)="searchCharacter()">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-
-        </div>
+    <div class="text-center">
+        <h1 class="titulo">
+            <img src="../../../assets/images/logomarvel.png" alt="Marvel Logo" width="250" height="80">
+            {{title}}
+        </h1>
     </div>
-</div>
 
-<div class="row row-cols-1 row-cols-md-4">
-    <div class="col mb-4" *ngFor="let character of characters | async">
-        <div class="card h-100 bg-dark text-white text-center p-3">
-            <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
-            <div class="card-body">
-                <h5 class="card-title">{{character.name}}</h5>
-                <button (click)="getCharacter(character.id)" class="btn btn-outline-primary btn-block">Details</button>
+    <div class="row justify-content-end">
+        <div class="col-lg-3 mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control mr-sm-2" placeholder="Search character" [(ngModel)]="searchQuery">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" (click)="searchCharacter()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
+
+    <div class="row row-cols-1 row-cols-md-4">
+        <div class="col mb-4" *ngFor="let character of characters | async">
+            <div class="card h-100 bg-dark text-white text-center p-3">
+                <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{character.name}}</h5>
+                    <button (click)="getCharacter(character.id)" class="btn btn-outline-primary btn-block">Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
