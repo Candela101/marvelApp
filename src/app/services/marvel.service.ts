@@ -31,7 +31,14 @@ export class MarvelService {
 
   getComic(id: string): Observable<any> {
 
-    return this.http.get(`${URL_API}/comics/${id}?ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`).pipe(map((data: any) => data.data.results));	
+    return this.http.get(`${URL_API}/comics/${id}?ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`).pipe(map((data: any) => data.data.results));
 
+  }
+
+  getCharacterByName(name: string): Observable<any[]> {
+    return this.http.get(`${URL_API}/characters?name=${name}&ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`)
+      .pipe(
+        map((data: any) => data.data.results)
+      );
   }
 }

@@ -1,8 +1,22 @@
 <div class="text-center">
     <h1 class="titulo">
-        <img src="../../../assets/images/logomarvel.png" alt="Logo Marvel" width="250" height="80">
-    {{title}}
+        <img src="../../../assets/images/logomarvel.png" alt="Marvel Logo" width="250" height="80">
+        {{title}}
     </h1>
+</div>
+
+<div class="row justify-content-end">
+    <div class="col-lg-3 mb-4">
+        <div class="input-group">
+            <input type="text" class="form-control mr-sm-2" placeholder="Search character" [(ngModel)]="searchQuery">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" (click)="searchCharacter()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <div class="row row-cols-1 row-cols-md-4">
