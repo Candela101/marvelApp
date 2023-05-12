@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
