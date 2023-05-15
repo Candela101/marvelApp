@@ -55,4 +55,8 @@ export class CharactersComponent implements OnInit {
       this.getCharacters();
     }
   }
+
+  getCurrentPage(): number {
+    return Math.floor(this.offset / this.limit) + 1;
+  }
 }

@@ -38,13 +38,16 @@
 <div class="row justify-content-center">
     <div class="col-auto">
         <button class="btn btn-outline-primary" type="button" (click)="loadPreviousPage()" [disabled]="offset === 0">
-            Previous
+            <span aria-hidden="true">&laquo;</span>
         </button>
+    </div>
+    <div class="col-auto page-number">
+        <span>{{ getCurrentPage() }}</span>
     </div>
     <div class="col-auto">
         <button class="btn btn-outline-primary" type="button" (click)="loadNextPage()"
             [disabled]="characters.length < limit">
-            Next
+            <span aria-hidden="true">&raquo;</span>
         </button>
     </div>
 </div>
