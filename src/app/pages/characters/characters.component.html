@@ -19,8 +19,12 @@
     </div>
 </div>
 
+<div *ngIf="(characters)?.length === 0" class="text-center">
+    <p class="display-4 fw-bold">No results found.</p>
+</div>
+
 <div class="row row-cols-1 row-cols-md-4">
-    <div class="col mb-4" *ngFor="let character of characters | async">
+    <div class="col mb-4" *ngFor="let character of characters">
         <div class="card h-100 bg-dark text-white text-center p-3">
             <img src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
             <div class="card-body">
@@ -31,6 +35,16 @@
     </div>
 </div>
 
-<div *ngIf="(characters | async)?.length === 0" class="text-center">
-    <p class="display-4 fw-bold">No results found.</p>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <button class="btn btn-outline-primary" type="button" (click)="loadPreviousPage()" [disabled]="offset === 0">
+            Previous
+        </button>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-outline-primary" type="button" (click)="loadNextPage()"
+            [disabled]="characters.length < limit">
+            Next
+        </button>
+    </div>
 </div>

@@ -14,8 +14,15 @@ export class MarvelService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacters(): Observable<any> {
-    return this.http.get<any>(`${URL_API}/characters?ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`).pipe(map((data: any) => data.data.results));
+  getCharacters(limit?: number, offset?: number): Observable<any> {
+    let url = `${URL_API}/characters?ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`;
+    if (limit) {
+      url += `&limit=${limit}`;
+    }
+    if (offset) {
+      url += `&offset=${offset}`;
+    }
+    return this.http.get<any>(url).pipe(map((data: any) => data.data.results));
   }
 
   getCharacter(id: string): Observable<any> {
