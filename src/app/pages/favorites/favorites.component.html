@@ -1,0 +1,14 @@
+<h1 class="text-center">My Favorites</h1>
+
+<div class="row row-cols-1 row-cols-md-4">
+  <div class="col mb-4" *ngFor="let character of favorites">
+    <div class="card h-100 bg-dark text-white text-center p-3">
+      <img src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" alt="{{ character.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ character.name }}</h5>
+        <button (click)="getCharacter(character.id)" class="btn btn-outline-primary btn-block">Details</button>
+        <button (click)="removeFavorite(character)" class="btn btn-outline-danger btn-block mt-2">Remove from Favorites</button>
+      </div>
+    </div>
+  </div>
+</div>

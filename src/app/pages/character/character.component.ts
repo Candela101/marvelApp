@@ -9,7 +9,7 @@ import { MarvelService } from 'src/app/services/marvel.service';
 })
 export class CharacterComponent implements OnInit {
 
-  title: string = 'Comic';
+  title: string = 'Character';
   idCharacter = '';
   character: any = {};
   characterDesc: string = '';

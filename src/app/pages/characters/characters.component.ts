@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, concat, map, of, switchMap } from 'rxjs';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MarvelService } from 'src/app/services/marvel.service';
 
 @Component({
@@ -15,8 +16,9 @@ export class CharactersComponent implements OnInit {
   searchQuery: string = '';
   limit: number = 20;
   offset: number = 0
+  favorites: any[] = [];
 
-  constructor(private marvelService: MarvelService, private router: Router) { }
+  constructor(private marvelService: MarvelService, private router: Router, private localStorage: LocalStorageService) { }
 
   ngOnInit(): void {
     this.getCharacters();
@@ -29,7 +31,6 @@ export class CharactersComponent implements OnInit {
       });
   }
   
-
   getCharacter(id: string) {
     this.router.navigate(['/character/', id]);
   }
@@ -58,5 +59,32 @@ export class CharactersComponent implements OnInit {
 
   getCurrentPage(): number {
     return Math.floor(this.offset / this.limit) + 1;
+  }
+
+  addToFavorites(character: any) {
+    if (!this.isFavorite(character)) {
+      this.favorites.push(character);
+      this.saveFavorites();
+    }
+  }
+
+  removeFromFavorites(character: any) {
+    const index = this.favorites.findIndex((fav) => fav.id === character.id);
+    if (index !== -1) {
+      this.favorites.splice(index, 1);
+      this.saveFavorites();
+    }
+  }
+
+  isFavorite(character: any): boolean {
+    return this.favorites.some((fav) => fav.id === character.id);
+  }
+
+  saveFavorites() {
+    this.localStorage.setItem('favorites', this.favorites);
+  }
+
+  loadFavorites() {
+    this.favorites = this.localStorage.getItem('favorites') || [];
   }
 }

@@ -13,6 +13,7 @@ import { CharacterComponent } from './pages/character/character.component';
 import { ComicsComponent } from './pages/comics/comics.component';
 import { ComicComponent } from './pages/comic/comic.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     ComicsComponent,
     ComicComponent,
     NavbarComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
