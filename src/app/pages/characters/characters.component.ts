@@ -25,26 +25,37 @@ export class CharactersComponent implements OnInit {
   }
 
   getCharacters() {
-    this.marvelService.getCharacters(this.limit, this.offset)
-      .subscribe(data => {
-        this.characters = data;
+    this.marvelService.getCharacters(this.limit, this.offset).subscribe((data) => {
+      const favorites = this.localStorage.getItem('favorites') || [];
+
+      this.characters = data.map((character: any) => {
+        character.isFavorite = favorites.some((fav: any) => fav.id === character.id);
+        return character;
       });
+    });
   }
-  
+
+
   getCharacter(id: string) {
     this.router.navigate(['/character/', id]);
   }
 
   searchCharacter() {
     if (this.searchQuery) {
-      this.marvelService.getCharacterByName(this.searchQuery).subscribe(data => {
-        this.characters = data;
+      this.marvelService.getCharacterByName(this.searchQuery).subscribe((data) => {
+        const favorites = this.localStorage.getItem('favorites') || [];
+  
+        this.characters = data.map((character) => {
+          character.isFavorite = favorites.some((fav:any) => fav.id === character.id);
+          return character;
+        });
       });
     } else {
       this.ngOnInit();
     }
   }
-    
+  
+
   loadNextPage() {
     this.offset += this.limit;
     this.getCharacters();
@@ -62,17 +73,19 @@ export class CharactersComponent implements OnInit {
   }
 
   addToFavorites(character: any) {
-    if (!this.isFavorite(character)) {
-      this.favorites.push(character);
-      this.saveFavorites();
-    }
+    character.isFavorite = true;
+    const favorites = this.localStorage.getItem('favorites') || [];
+    favorites.push(character);
+    this.localStorage.setItem('favorites', favorites);
   }
 
   removeFromFavorites(character: any) {
-    const index = this.favorites.findIndex((fav) => fav.id === character.id);
+    character.isFavorite = false;
+    const favorites = this.localStorage.getItem('favorites') || [];
+    const index = favorites.findIndex((fav: any) => fav.id === character.id);
     if (index !== -1) {
-      this.favorites.splice(index, 1);
-      this.saveFavorites();
+      favorites.splice(index, 1);
+      this.localStorage.setItem('favorites', favorites);
     }
   }
 

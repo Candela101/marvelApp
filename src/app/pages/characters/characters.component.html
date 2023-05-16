@@ -29,15 +29,22 @@
             <img src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" alt="{{ character.name }}">
             <div class="card-body">
                 <h5 class="card-title">{{ character.name }}</h5>
-                <button (click)="getCharacter(character.id)" class="btn btn-outline-primary btn-block">Details</button>
-                <button (click)="isFavorite(character) ? removeFromFavorites(character) : addToFavorites(character)"
+                <button *ngIf="!character.isFavorite" (click)="addToFavorites(character)"
                     class="btn btn-outline-danger btn-block mt-2">
-                    {{ isFavorite(character) ? 'Remove from Favorites' : 'Add to Favorites' }}
+                    Add to Favorites
+                </button>
+                <button *ngIf="character.isFavorite" (click)="removeFromFavorites(character)"
+                    class="btn btn-outline-primary btn-block mt-2">
+                    Remove from Favorites
+                </button>
+                <button (click)="getCharacter(character.id)" class="btn btn-outline-primary btn-block mt-2">
+                    Details
                 </button>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="row justify-content-center">
     <div class="col-auto">
