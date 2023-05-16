@@ -29,26 +29,29 @@
             <img src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" alt="{{ character.name }}">
             <div class="card-body">
                 <h5 class="card-title">{{ character.name }}</h5>
-                <button *ngIf="!character.isFavorite" (click)="addToFavorites(character)"
-                    class="btn btn-outline-danger btn-block mt-2">
-                    Add to Favorites
-                </button>
-                <button *ngIf="character.isFavorite" (click)="removeFromFavorites(character)"
-                    class="btn btn-outline-primary btn-block mt-2">
-                    Remove from Favorites
-                </button>
                 <button (click)="getCharacter(character.id)" class="btn btn-outline-primary btn-block mt-2">
                     Details
                 </button>
+                <div class="mt-2" *ngIf="!character.isFavorite">
+                    <span (click)="toggleFavorite(character)">
+                        <i class="fa-regular fa-heart"></i>
+                    </span>
+                </div>
+
+                <div class="mt-2" *ngIf="character.isFavorite">
+                    <span (click)="toggleFavorite(character)">
+                        <i class="fa-solid fa-heart"></i>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
-<div class="row justify-content-center">
+<div class="row justify-content-center" *ngIf="searchQuery === ''">
     <div class="col-auto">
-        <button class="btn btn-outline-primary" type="button" (click)="loadPreviousPage()" [disabled]="offset === 0">
+        <button class="btn btn-outline-primary" type="button" (click)="loadPreviousPage()"
+            [disabled]="offset === 0">
             <span aria-hidden="true">&laquo;</span>
         </button>
     </div>

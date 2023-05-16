@@ -44,9 +44,9 @@ export class CharactersComponent implements OnInit {
     if (this.searchQuery) {
       this.marvelService.getCharacterByName(this.searchQuery).subscribe((data) => {
         const favorites = this.localStorage.getItem('favorites') || [];
-  
+
         this.characters = data.map((character) => {
-          character.isFavorite = favorites.some((fav:any) => fav.id === character.id);
+          character.isFavorite = favorites.some((fav: any) => fav.id === character.id);
           return character;
         });
       });
@@ -54,7 +54,7 @@ export class CharactersComponent implements OnInit {
       this.ngOnInit();
     }
   }
-  
+
 
   loadNextPage() {
     this.offset += this.limit;
@@ -73,14 +73,14 @@ export class CharactersComponent implements OnInit {
   }
 
   addToFavorites(character: any) {
-    character.isFavorite = true;
     const favorites = this.localStorage.getItem('favorites') || [];
-    favorites.push(character);
-    this.localStorage.setItem('favorites', favorites);
+    if (favorites.findIndex((fav: any) => fav.id === character.id) === -1) {
+      favorites.push(character);
+      this.localStorage.setItem('favorites', favorites);
+    }
   }
 
   removeFromFavorites(character: any) {
-    character.isFavorite = false;
     const favorites = this.localStorage.getItem('favorites') || [];
     const index = favorites.findIndex((fav: any) => fav.id === character.id);
     if (index !== -1) {
@@ -100,4 +100,14 @@ export class CharactersComponent implements OnInit {
   loadFavorites() {
     this.favorites = this.localStorage.getItem('favorites') || [];
   }
+
+  toggleFavorite(character: any) {
+    character.isFavorite = !character.isFavorite;
+    if (character.isFavorite) {
+      this.addToFavorites(character);
+    } else {
+      this.removeFromFavorites(character);
+    }
+  }
+
 }

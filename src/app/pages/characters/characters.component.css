@@ -1,6 +1,19 @@
 .page-number {
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-    margin-right: 5px;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.fa-solid.fa-heart {
+  color: red;
+}
+
+.fa-solid.fa-heart:hover {
+  color: darkred;
+  cursor: pointer;
+}
+
+.fa-regular .fa-heart{
+  color: red;
 }
