@@ -12,6 +12,16 @@
             <div class="card-body">
                 <h5 class="card-title">{{comic.title}}</h5>
                 <button (click)="getComics(comic.id)" class="btn btn-outline-primary btn-block">Details</button>
+                <div class="mt-2" *ngIf="!comic.isFavorite">
+                    <span (click)="toggleFavorite(comic)">
+                        <i class="fa-regular fa-heart"></i>
+                    </span>
+                </div>
+                <div class="mt-2" *ngIf="comic.isFavorite">
+                    <span (click)="toggleFavorite(comic)">
+                        <i class="fa-solid fa-heart"></i>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
