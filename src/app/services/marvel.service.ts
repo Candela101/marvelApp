@@ -22,19 +22,23 @@ export class MarvelService {
     if (offset) {
       url += `&offset=${offset}`;
     }
-    return this.http.get<any>(url).pipe(map((data: any) => data.data.results));
+    return this.http.get(url).pipe(map((data: any) => data.data.results));
   }
 
   getCharacter(id: string): Observable<any> {
     return this.http.get(`${URL_API}/characters/${id}?ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`).pipe(map((data: any) => data.data.results));
   }
 
-  getComics(): Observable<any> {
-
-    return this.http.get<any>(`${URL_API}/comics?ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`).pipe(map((data: any) => data.data.results));
-
+  getComics(limit?: number, offset?:number): Observable<any> {
+    let url = `${URL_API}/comics?ts=1&apikey=${KEY_PUBLIC}&hash=${HASH}`;
+    if (limit) {
+      url += `&limit=${limit}`;
+    }
+    if (offset) {
+      url += `&offset=${offset}`;
+    }
+    return this.http.get(url).pipe(map((data: any) => data.data.results));
   }
-
 
   getComic(id: string): Observable<any> {
 

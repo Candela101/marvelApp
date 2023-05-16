@@ -6,16 +6,30 @@
 </div>
 
 <div class="row row-cols-1 row-cols-md-4">
-    <div class="col mb-4" *ngFor="let comic of comics |async">
+    <div class="col mb-4" *ngFor="let comic of comics">
         <div class="card h-100 bg-dark text-white text-center p-3">
             <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" class="card-img-top" alt="{{comic.name}}">
             <div class="card-body">
                 <h5 class="card-title">{{comic.title}}</h5>
-
                 <button (click)="getComics(comic.id)" class="btn btn-outline-primary btn-block">Details</button>
-
-
             </div>
         </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <button class="btn btn-outline-primary" type="button" (click)="loadPreviousPage()" [disabled]="offset === 0">
+            <span aria-hidden="true">&laquo;</span>
+        </button>
+    </div>
+    <div class="col-auto page-number">
+        <span>{{ getCurrentPage() }}</span>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-outline-primary" type="button" (click)="loadNextPage()"
+            [disabled]="comics.length < limit">
+            <span aria-hidden="true">&raquo;</span>
+        </button>
     </div>
 </div>

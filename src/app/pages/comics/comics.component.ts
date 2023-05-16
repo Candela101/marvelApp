@@ -8,12 +8,14 @@ import { MarvelService } from 'src/app/services/marvel.service';
   templateUrl: './comics.component.html',
   styleUrls: ['./comics.component.css']
 })
-export class ComicsComponent implements OnInit{
+export class ComicsComponent implements OnInit {
 
-  title='Comics';
+  title = 'Comics';
 
-  constructor(private marvelSvc:MarvelService, private router:Router) { }
-  comics?:Observable<any>;
+  constructor(private marvelSvc: MarvelService, private router: Router) { }
+  comics: any[] = [];
+  limit: number = 20;
+  offset: number = 0;
 
 
   ngOnInit() {
@@ -21,15 +23,31 @@ export class ComicsComponent implements OnInit{
     this.getAllComics();
   }
 
-  getAllComics(){
+  getAllComics() {
 
-    this.comics= this.marvelSvc.getComics();
+    this.marvelSvc.getComics(this.limit, this.offset).subscribe(data => {
+      this.comics = data;
+    });
 
   }
 
-  getComics(id:string){
+  getComics(id: string) {
+    this.router.navigate(['/comic/', id]);
+  }
 
-    this.router.navigate(['/comic/',id]);
+  loadNextPage() {
+    this.offset += this.limit;
+    this.getAllComics();
+  }
 
+  loadPreviousPage() {
+    if (this.offset >= this.limit) {
+      this.offset -= this.limit;
+      this.getAllComics();
+    }
+  }
+
+  getCurrentPage(): number {
+    return Math.floor(this.offset / this.limit) + 1;
   }
 }
