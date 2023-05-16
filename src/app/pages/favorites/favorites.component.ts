@@ -22,19 +22,42 @@ export class FavoritesComponent implements OnInit{
     this.router.navigate(['/character/', id]);
   }
 
-  loadFavorites() {
-    this.favorites = this.localStorage.getItem('favorites') || [];
+  getComics(id: string) {
+    this.router.navigate(['/comic/', id]);
   }
 
-  removeFavorite(character: any) {
-    const index = this.favorites.findIndex((fav) => fav.id === character.id);
+  loadFavorites() {
+    this.favorites = this.localStorage.getItem('favorites') || [];
+    this.favorites.forEach((item) => {
+      if (item.isFavorite === undefined) {
+        item.isFavorite = true;
+      }
+    });
+  }
+
+  removeFavorite(item: any) {
+    const index = this.favorites.findIndex((fav) => fav.id === item.id);
     if (index !== -1) {
       this.favorites.splice(index, 1);
+      item.isFavorite = false;
       this.saveFavorites();
     }
   }
 
   saveFavorites() {
     this.localStorage.setItem('favorites', this.favorites);
+  }
+
+  toggleFavorite(item: any) {
+    item.isFavorite = !item.isFavorite;
+    if (item.isFavorite) {
+      this.favorites.push(item);
+    } else {
+      const index = this.favorites.findIndex((fav) => fav.id === item.id);
+      if (index !== -1) {
+        this.favorites.splice(index, 1);
+      }
+    }
+    this.saveFavorites();
   }
 }
