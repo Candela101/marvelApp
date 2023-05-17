@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, concat, map, of, switchMap } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { MarvelService } from 'src/app/services/marvel.service';
 
@@ -54,7 +53,6 @@ export class CharactersComponent implements OnInit {
       this.ngOnInit();
     }
   }
-
 
   loadNextPage() {
     this.offset += this.limit;
