@@ -7,11 +7,11 @@
 
 <div class="row row-cols-1 row-cols-md-4">
     <div class="col mb-4" *ngFor="let comic of comics">
-        <div class="card h-100 bg-dark text-white text-center p-3 zoom-card">
-            <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" class="card-img-top" alt="{{comic.name}}">
+        <div class="card h-100 text-white text-center p-3 zoom-card card-color">
+            <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" class="card-img-top custom-image" alt="{{comic.name}}">
             <div class="card-body">
                 <h5 class="card-title">{{comic.title}}</h5>
-                <button (click)="getComics(comic.id)" class="btn btn-outline-primary btn-block">Details</button>
+                <button (click)="getComics(comic.id)" class="btn btn-outline btn-block custom-button">Details</button>
                 <div class="mt-2" *ngIf="!comic.isFavorite">
                     <span (click)="toggleFavorite(comic)">
                         <i class="fa-regular fa-heart"></i>

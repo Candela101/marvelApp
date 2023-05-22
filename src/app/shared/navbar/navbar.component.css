@@ -1,0 +1,19 @@
+.nav-color{
+    background-color: #1E2639;
+}
+
+.item-color{
+    color: white;
+}
+
+.button-color{
+    background-color: #B9BEBA;
+}
+
+.item-color li a{
+    color: white;
+}
+
+.item-color li a:hover{
+    color: #4D8AB5;
+}

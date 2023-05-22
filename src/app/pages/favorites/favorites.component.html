@@ -2,13 +2,13 @@
 
 <div class="row row-cols-1 row-cols-md-4">
   <div class="col mb-4" *ngFor="let item of favorites">
-    <div class="card h-100 bg-dark text-white text-center p-3 zoom-card">
+    <div class="card h-100 bg-dark text-white text-center p-3 zoom-card card-color">
       <img src="{{ item.thumbnail.path }}.{{ item.thumbnail.extension }}" alt="{{ item.name }}">
       <div class="card-body">
         <h5 class="card-title">{{ item.name || item.title }}</h5>
-        <button (click)="getCharacter(item.id)" *ngIf="item.name" class="btn btn-outline-primary btn-block">Details</button>
-        <button (click)="getComics(item.id)" *ngIf="item.title" class="btn btn-outline-primary btn-block">Details</button>
-        <button (click)="removeFavorite(item)" class="btn btn-outline-danger btn-block mt-2">Remove from Favorites</button>
+        <button (click)="getCharacter(item.id)" *ngIf="item.name" class="btn btn-outline btn-block custom-button">Details</button>
+        <button (click)="getComics(item.id)" *ngIf="item.title" class="btn btn-block custom-button">Details</button>
+        <button (click)="removeFavorite(item)" class="btn btn-outline btn-block mt-2 button-delete">Remove from Favorites</button>
       </div>
     </div>
   </div>

@@ -5,3 +5,27 @@
 .zoom-card:hover {
   transform: scale(1.05);
 }
+
+.card-color {
+  background-color: #1e2639;
+}
+
+.custom-button {
+  color: #4d8ab5;
+  border-color: #4d8ab5;
+}
+
+.custom-button:hover {
+  background-color: #4d8ab5;
+  color: #ffffff;
+}
+
+.button-delete {
+    color: #C72523;
+    border-color: #C72523;
+}
+
+.button-delete:hover {
+    background-color: #C72523;
+    color: #ffffff;
+}

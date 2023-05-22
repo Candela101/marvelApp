@@ -1,0 +1,20 @@
+.custom-button {
+    color: #c72523;
+    border-color: #c72523;
+  }
+  
+  .custom-button:hover {
+    background-color: #c72523;
+    color: #ffffff;
+  }
+  
+  .return-button {
+    color: #4d8ab5;
+    border-color: #4d8ab5;
+  }
+  
+  .return-button:hover {
+    background-color: #4d8ab5;
+    color: #ffffff;
+  }
+  
