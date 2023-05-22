@@ -50,7 +50,7 @@
 
 <div class="row justify-content-center" *ngIf="searchQuery === ''">
     <div class="col-auto">
-        <button class="btn btn-outline-primary" type="button" (click)="loadPreviousPage()"
+        <button class="btn btn-outline custom-button" type="button" (click)="loadPreviousPage()"
             [disabled]="offset === 0">
             <span aria-hidden="true">&laquo;</span>
         </button>
@@ -59,7 +59,7 @@
         <span>{{ getCurrentPage() }}</span>
     </div>
     <div class="col-auto">
-        <button class="btn btn-outline-primary" type="button" (click)="loadNextPage()"
+        <button class="btn btn-outline custom-button" type="button" (click)="loadNextPage()"
             [disabled]="characters.length < limit">
             <span aria-hidden="true">&raquo;</span>
         </button>
