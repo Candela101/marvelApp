@@ -6,9 +6,9 @@
       <img src="{{ item.thumbnail.path }}.{{ item.thumbnail.extension }}" alt="{{ item.name }}">
       <div class="card-body">
         <h5 class="card-title">{{ item.name || item.title }}</h5>
-        <button (click)="getCharacter(item.id)" *ngIf="item.name" class="btn btn-outline btn-block custom-button">Details</button>
+        <button (click)="getCharacter(item.id)" *ngIf="item.name" class="btn btn-block custom-button">Details</button>
         <button (click)="getComics(item.id)" *ngIf="item.title" class="btn btn-block custom-button">Details</button>
-        <button (click)="removeFavorite(item)" class="btn btn-outline btn-block mt-2 button-delete">Remove from Favorites</button>
+        <button (click)="removeFavorite(item)" class="btn btn-block mt-2 button-delete">Remove from Favorites</button>
       </div>
     </div>
   </div>

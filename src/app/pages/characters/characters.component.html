@@ -29,7 +29,7 @@
             <img class="card-image" src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" alt="{{ character.name }}">
             <div class="card-body">
                 <h5 class="card-title">{{ character.name }}</h5>
-                <button (click)="getCharacter(character.id)" class="btn btn-outline btn-block mt-2 custom-button">
+                <button (click)="getCharacter(character.id)" class="btn btn-block mt-2 custom-button">
                     Details
                 </button>
                 <div class="mt-2" *ngIf="!character.isFavorite">
@@ -50,8 +50,8 @@
 
 <div class="row justify-content-center" *ngIf="searchQuery === ''">
     <div class="col-auto">
-        <button class="btn btn-outline custom-button" type="button" (click)="loadPreviousPage()"
-            [disabled]="offset === 0">
+        <button class="btn custom-button" type="button" (click)="loadPreviousPage()"
+            [disabled]="offset === 0" title="Page back">
             <span aria-hidden="true">&laquo;</span>
         </button>
     </div>
@@ -59,8 +59,8 @@
         <span>{{ getCurrentPage() }}</span>
     </div>
     <div class="col-auto">
-        <button class="btn btn-outline custom-button" type="button" (click)="loadNextPage()"
-            [disabled]="characters.length < limit">
+        <button class="btn custom-button" type="button" (click)="loadNextPage()"
+            [disabled]="characters.length < limit" title="Next page">
             <span aria-hidden="true">&raquo;</span>
         </button>
     </div>
